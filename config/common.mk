@@ -115,6 +115,10 @@ PRODUCT_COPY_FILES += \
     vendor/carbon/prebuilt/common/media/LMprec_508.emd:system/media/LMprec_508.emd \
     vendor/carbon/prebuilt/common/media/PFFprec_600.emd:system/media/PFFprec_600.emd
 
+# launcher
+PRODUCT_COPY_FILES += \
+    vendor/carbon/proprietary/NovaLauncher/NovaLauncher.apk:system/app/NovaLauncher.apk
+
 #backup tool
 CARBON_BUILD = true
 PRODUCT_COPY_FILES += \
