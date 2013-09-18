@@ -33,7 +33,6 @@ PRODUCT_PACKAGES += \
     CarbonFibers \
     Development \
     DSPManager \
-    Focal \
     CMFileManager \
     Galaxy4 \
     HALO \
@@ -49,8 +48,6 @@ PRODUCT_PACKAGES += \
     SunBeam \
     Superuser \
     su \
-    Torch \
-    Trebuchet \
     VoicePlus \
     Wallpapers \
     audio_effects.conf
