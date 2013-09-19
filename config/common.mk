@@ -31,6 +31,7 @@ PRODUCT_PACKAGES += \
     BlueBalls \
     Camera \
     CarbonFibers \
+    PerformanceControl \
     Development \
     DSPManager \
     CMFileManager \
