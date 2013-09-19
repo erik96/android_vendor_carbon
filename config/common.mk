@@ -52,11 +52,6 @@ PRODUCT_PACKAGES += \
     Wallpapers \
     audio_effects.conf
 
-
-# prebuilts
-PRODUCT_PACKAGES += \
-    GooManager
-
 # tools
 PRODUCT_PACKAGES += \
     CellBroadcastReceiver
