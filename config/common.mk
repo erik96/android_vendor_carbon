@@ -1,7 +1,7 @@
 # brand
 PRODUCT_BRAND ?= Carbon
 
-#SuperUser
+# SuperUser
 SUPERUSER_EMBEDDED := true
 
 ifneq ($(TARGET_SCREEN_WIDTH) $(TARGET_SCREEN_HEIGHT),$(space))
@@ -55,48 +55,49 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=1
 
-# Camera shutter sound property
+# camera shutter sound property
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.camera-sound=1
 
-# packages
+# main packages
 PRODUCT_PACKAGES += \
-    Apollo \
-    BlueBalls \
     BluetoothExt \
     Camera \
-    CarbonFibers \
     Development \
-    DSPManager \
     CMFileManager \
     Galaxy4 \
     LatinIME \
-    libcyanogen-dsp \
     LiveWallpapers \
     LiveWallpapersPicker \
     LockClock \
     NoiseField \
     PhaseBeam \
     PhotoTable \
-    ROMStats \
-    SunBeam \
     Superuser \
     su \
     Torch \
-    Trebuchet \
     VoicePlus \
-    Wallpapers \
-    audio_effects.conf \
     libemoji
+
+# carbon packages
+PRODUCT_PACKAGES += \
+    BlueBalls \
+    CarbonAbout \
+    CarbonDelta \
+    CarbonFibers \
+    ROMStats \
+    Wallpapers
+
+# dsp manager
+PRODUCT_PACKAGES += \
+    DSPManager \
+    audio_effects.conf \
+    libcyanogen-dsp
 
 # Screen recorder
 PRODUCT_PACKAGES += \
     ScreenRecorder \
     libscreenrecorder
-
-# prebuilts
-PRODUCT_PACKAGES += \
-    GooManager
 
 # CM Hardware Abstraction Framework
 PRODUCT_PACKAGES += \
@@ -104,6 +105,7 @@ PRODUCT_PACKAGES += \
     org.cyanogenmod.hardware.xml
 
 PRODUCT_PACKAGES += \
+    libsepol \
     e2fsck \
     mke2fs \
     tune2fs \
@@ -130,7 +132,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # themes
 include vendor/carbon/config/theme_chooser.mk
 
-#korean
+# korean
 $(call inherit-product-if-exists, external/naver-fonts/fonts.mk)
 
 # overlay
@@ -152,7 +154,7 @@ PRODUCT_COPY_FILES += \
     vendor/carbon/prebuilt/common/media/LMprec_508.emd:system/media/LMprec_508.emd \
     vendor/carbon/prebuilt/common/media/PFFprec_600.emd:system/media/PFFprec_600.emd
 
-#backup tool
+# Backup tool
 CARBON_BUILD = true
 PRODUCT_COPY_FILES += \
     vendor/carbon/prebuilt/common/bin/backuptool.sh:system/bin/backuptool.sh \
@@ -180,29 +182,17 @@ RELEASE = false
 CARBON_VERSION_MAJOR = 2
 CARBON_VERSION_MINOR = 0
 
-#Set CARBON_BUILDTYPE and goo.im properties
+# Set CARBON_BUILDTYPE
 ifdef CARBON_NIGHTLY
     CARBON_BUILDTYPE := NIGHTLY
-    PRODUCT_PROPERTY_OVERRIDES += \
-        ro.goo.rom=carbonjb3exp \
-        ro.goo.developerid=carbon \
-        ro.goo.version=$(shell date +%Y%m%d)
 endif
 ifdef CARBON_EXPERIMENTAL
     CARBON_BUILDTYPE := EXPERIMENTAL
-    PRODUCT_PROPERTY_OVERRIDES += \
-        ro.goo.rom=carbonjb3exp \
-        ro.goo.developerid=carbon \
-        ro.goo.version=$(shell date +%Y%m%d)
 endif
 ifdef CARBON_RELEASE
     CARBON_BUILDTYPE := RELEASE
-    PRODUCT_PROPERTY_OVERRIDES += \
-        ro.goo.rom=carbonjb2 \
-        ro.goo.developerid=carbon \
-        ro.goo.version=$(shell date +%Y%m%d)
 endif
-#Set Unofficial if no buildtype set (Buildtype should ONLY be set by Carbon Devs!)
+# Set Unofficial if no buildtype set (Buildtype should ONLY be set by Carbon Devs!)
 ifdef CARBON_BUILDTYPE
 else
     CARBON_BUILDTYPE := UNOFFICIAL
@@ -210,7 +200,7 @@ else
     CARBON_VERSION_MINOR :=
 endif
 
-#Set Carbon version
+# Set Carbon version
 ifdef CARBON_RELEASE
     CARBON_VERSION := "CARBON-KK-v"$(CARBON_VERSION_MAJOR).$(CARBON_VERSION_MINOR)
 else
@@ -225,5 +215,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 ro.romstats.askfirst=1 \
 ro.romstats.ga=UA-43747246-1 \
 ro.romstats.name=CarbonRom- \
-ro.romstats.url=http://carbon-stats.mattman.org \
+ro.romstats.url=http://stats.carbon-rom.com \
 ro.romstats.version=$(CARBON_VERSION)
