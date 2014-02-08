@@ -64,6 +64,7 @@ PRODUCT_PACKAGES += \
     BluetoothExt \
     Camera \
     Development \
+    PerformanceControl \
     CMFileManager \
     Galaxy4 \
     LatinIME \
@@ -75,7 +76,6 @@ PRODUCT_PACKAGES += \
     PhotoTable \
     Superuser \
     su \
-    Torch \
     VoicePlus \
     libemoji
 
